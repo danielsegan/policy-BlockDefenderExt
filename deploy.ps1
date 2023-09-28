@@ -1,11 +1,14 @@
+### Define the Policy
 $definition = New-AzPolicyDefinition `
    -Name "not-allowed-vmextension-windows" `
    -DisplayName "Not allowed VM Extensions" `
    -description "This policy governs which VM extensions that are explicitly denied."   `
    -Policy './rules.json' `
    -Parameter './parameters.json'
+### Set the scope for which this policy applies, in our case RG
+$scope = "/subscriptions/<<<SubsctiptionId>>>/resourceGroups/<<ResourceGroup>>"
 
-$scope = "/subscriptions/f3482bdc-db98-4c56-b961-f7fb0e8eef3f/resourceGroups/myResourceGroup"
+### Assign the policy defined above, and supply the extension names. 
 $assignment = New-AzPolicyAssignment `
    -Name "not-allowed-vmextension-windows" `
    -Scope $scope `
