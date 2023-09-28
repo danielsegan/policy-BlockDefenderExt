@@ -2,8 +2,8 @@ $definition = New-AzPolicyDefinition `
    -Name "not-allowed-vmextension-windows" `
    -DisplayName "Not allowed VM Extensions" `
    -description "This policy governs which VM extensions that are explicitly denied."   `
-   -Policy '/Users/dsegan/src/securitas-policy/rules.json' `
-   -Parameter '/Users/dsegan/src/securitas-policy/parameters.json'
+   -Policy './rules.json' `
+   -Parameter './parameters.json'
 
 $scope = "/subscriptions/f3482bdc-db98-4c56-b961-f7fb0e8eef3f/resourceGroups/myResourceGroup"
 $assignment = New-AzPolicyAssignment `
